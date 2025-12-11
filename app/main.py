@@ -26,52 +26,70 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+
 st.markdown("""
 <style>
     /* Main chat styling */
     .stChatMessage {
-        background-color: #f8f9fa; 
+        background-color: #ffffff; 
         border-radius: 12px;
         padding: 16px;
         margin-bottom: 12px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Ensure all text is visible - BLACK TEXT */
+    .stChatMessage p,
+    .stChatMessage div,
+    .stChatMessage span {
+        color: #1a202c !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
     
     /* User message styling */
     .stChatMessage[data-testid="user-message"] {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+        border-left: 4px solid #5a67d8;
     }
     
-    .stChatMessage[data-testid="user-message"] p {
+    .stChatMessage[data-testid="user-message"] p,
+    .stChatMessage[data-testid="user-message"] div,
+    .stChatMessage[data-testid="user-message"] span {
         color: white !important;
     }
     
-    /* Assistant message styling - darker background for better link visibility */
+    /* Assistant message styling - Light background with DARK text */
     .stChatMessage[data-testid="assistant-message"] {
-        background-color: #2d3748;
-        color: #e2e8f0;
+        background-color: #f7fafc;
+        border-left: 4px solid #4299e1;
     }
     
-    .stChatMessage[data-testid="assistant-message"] p {
-        color: #e2e8f0 !important;
+    .stChatMessage[data-testid="assistant-message"] p,
+    .stChatMessage[data-testid="assistant-message"] div,
+    .stChatMessage[data-testid="assistant-message"] span {
+        color: #1a202c !important;
     }
     
-    /* Link styling - highly visible */
+    /* Link styling - highly visible BLUE links */
     .stChatMessage a {
-        color: #63b3ed !important;
-        text-decoration: none !important;
+        color: #2b6cb0 !important;
+        text-decoration: underline !important;
         font-weight: 600 !important;
-        padding: 2px 6px;
-        border-radius: 4px;
-        background-color: rgba(99, 179, 237, 0.15);
+        padding: 2px 4px;
+        border-radius: 3px;
+        background-color: #bee3f8;
         transition: all 0.2s ease;
+        word-break: break-all !important;
+        display: inline-block;
+        max-width: 100%;
     }
     
     .stChatMessage a:hover {
-        color: #90cdf4 !important;
-        background-color: rgba(99, 179, 237, 0.25);
-        text-decoration: underline !important;
+        color: #1a365d !important;
+        background-color: #90cdf4;
     }
     
     /* Title styling */
@@ -112,6 +130,7 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 # Sidebar with instructions
 with st.sidebar:
