@@ -4,3 +4,4 @@ python-dotenv
 groq
 semantic-router
 sentence-transformers
+chromadb
